@@ -12,6 +12,14 @@
     "linkOpenStyle": false,
     "links": [
       {
+        "url": "https://www.facebook.com",
+        "name": "facebook"
+      },
+      {
+        "url": "https://www.linkedin.com/feed",
+        "name": "linkedin"
+      },
+      {
         "url": "https://lukesmith.xyz/",
         "name": "lukesmith"
       },
