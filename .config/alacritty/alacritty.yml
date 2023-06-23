@@ -1,0 +1,174 @@
+##### IMPORTS
+import:
+  - "~/.config/alacritty/colorshemes.yml" ## COLORSHEMES
+  - "~/.config/alacritty/fonts.yml" ## FONTS
+  - "~/.config/alacritty/keybindings.yml"
+  - "~/.config/alacritty/window.yml"
+##### ENV
+env:
+  # TERM variable
+  # This value is used to set the `$TERM` environment variable for
+  # each instance of Alacritty. If it is not present, alacritty will
+  # check the local terminfo database and use `alacritty` if it is
+  # available, otherwise `xterm-256color` is used.
+  TERM: xterm-256color
+
+##### SCROLLING
+scrolling:
+  # Maximum number of lines in the scrollback buffer.
+  # Specifying '0' will disable scrolling.
+  history: 5000
+
+  # Number of lines the viewport will move for every line scrolled when
+  # scrollback is enabled (history > 0).
+  multiplier: 3
+
+  # Scroll to the bottom when new text is written to the terminal.
+  auto_scroll: true
+
+##### TABSPACE
+# Spaces per Tab (changes require restart)
+# This setting defines the width of a tab in cells.
+# Some applications, like Emacs, rely on knowing about the width of a tab.
+# To prevent unexpected behavior in these applications, it's also required to
+# change the `it` value in terminfo when altering this setting.
+tabspaces: 8
+# If `true`, bold text is drawn using the bright color variants.
+draw_bold_text_with_bright_colors: true
+
+##### VISUAL BELL
+#
+# Any time the BEL code is received, Alacritty "rings" the visual bell. Once
+# rung, the terminal background will be set to white and transition back to the
+# default background color. You can control the rate of this transition by
+# setting the `duration` property (represented in milliseconds). You can also
+# configure the transition function by setting the `animation` property.
+#
+# Values for `animation`:
+#   - Ease
+#   - EaseOut
+#   - EaseOutSine
+#   - EaseOutQuad
+#   - EaseOutCubic
+#   - EaseOutQuart
+#   - EaseOutQuint
+#   - EaseOutExpo
+#   - EaseOutCirc
+#   - Linear
+# Specifying a `duration` of `0` will disable the visual bell.
+visual_bell:
+  animation: EaseOutExpo
+  duration: 0
+  color: "#ffffff"
+
+##### SELECTION
+selection:
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
+  # When set to `true`, selected text will be copied to the primary clipboard.
+  save_to_clipboard: false
+
+# Allow terminal applications to change Alacritty's window title.
+dynamic_title: true
+
+##### CURSOR
+cursor:
+  # Cursor style
+  # Values for `style`:
+  #   - ▇ Block
+  #   - _ Underline
+  #   - | Beam
+  style:
+    shape: Block
+    blinking: Off
+
+# If this is `true`, the cursor will be rendered as a hollow box when the
+# window is not focused.
+unfocused_hollow: true
+# Live config reload (changes require restart)
+live_config_reload: true
+#### SHELL
+# You can set `shell.program` to the path of your favorite shell, e.g. `/bin/fish`.
+# Entries in `shell.args` are passed unmodified as arguments to the shell.
+# Default:
+#   - (macOS) /bin/bash --login
+#   - (Linux/BSD) user login shell
+#   - (Windows) powershell
+#shell:
+#  program: /bin/bash
+#  args:
+#    - --login
+
+# Startup directory
+# Directory the shell is started in. If this is unset, or `None`, the working
+# directory of the parent process will be used.
+#working_directory: None
+# WinPTY backend (Windows only)
+# Alacritty defaults to using the newer ConPTY backend if it is available,
+# since it resolves a lot of bugs and is quite a bit faster. If it is not
+# available, the the WinPTY backend will be used instead.
+# Setting this option to `true` makes Alacritty use the legacy WinPTY backend,
+# even if the ConPTY backend is available.
+#winpty_backend: false
+# Send ESC (\x1b) before characters when alt is pressed.
+#alt_send_esc: true
+
+###### DEBUG
+debug:
+  # Display the time it takes to redraw each frame.
+  render_timer: false
+  # Keep the log file after quitting Alacritty.
+  #persistent_logging: false
+  # Log level
+  # Values for `log_level`:
+  #   - None
+  #   - Error
+  #   - Warn
+  #   - Info
+  #   - Debug
+  #   - Trace
+  log_level: Warn
+  # Print all received window events.
+  print_events: false
+  # Record all characters and escape sequences as test data.
+ref_test: false
+##### MOUSE
+mouse:
+  # Click settings
+  # The `double_click` and `triple_click` settings control the time
+  # alacritty should wait for accepting multiple clicks as one double
+  # or triple click.
+  double_click: { threshold: 300 }
+  triple_click: { threshold: 300 }
+  # If this is `true`, the cursor is temporarily hidden when typing.
+  hide_when_typing: false
+##### URL
+url:
+# URL launcher
+# This program is executed when clicking on a text which is recognized as a URL.
+# The URL is always added to the command as the last parameter.
+# When set to `None`, URL launching will be disabled completely.
+# Default:
+#   - (macOS) open
+#   - (Linux/BSD) xdg-open
+#   - (Windows) explorer
+launcher:
+  program: xdg-open
+  args: []
+# URL modifiers
+# These are the modifiers that need to be held down for opening URLs when clicking
+# on them. The available modifiers are documented in the key binding section.
+modifiers: None
+##### MOUSE BINDINGS
+# Mouse bindings are specified as a list of objects, much like the key
+# bindings further below.
+# Each mouse binding will specify a:
+# - `mouse`:
+#   - Middle
+#   - Left
+#   - Right
+#   - Numeric identifier such as `5`
+# - `action` (see key bindings)
+# And optionally:
+# - `mods` (see key bindings)
+mouse_bindings:
+  - { mouse: Middle, action: PasteSelection }
