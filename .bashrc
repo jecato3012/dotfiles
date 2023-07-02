@@ -56,6 +56,10 @@ fi
 if [ -d "$HOME/go/bin/" ]; then
 	PATH="$HOME/go/bin/:$PATH"
 fi
+!.fzf.bash
+!.fzf.zsh
+export PATH="/home/je4n/.local/share/fnm:$PATH"
+eval "`fnm env`"
 
 # pnpm
 export PNPM_HOME="/home/jean/.local/share/pnpm"

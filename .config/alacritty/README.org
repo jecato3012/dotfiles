@@ -1,4 +1,4 @@
-#+title: Readme
+#+title: Alacritty config
 #+AUTHOR: jecato3012
 #+PROPERTY: header-args :tangle alacritty.yml
 #+auto_tangle: t
@@ -26,6 +26,8 @@
 * About Alacritty
 Configuration for Alacritty, the GPU enhanced terminal emulator. Any items in the `env` entry below will be added as environment variables. Some entries may override variables set by alacritty itself.
 
+#+CAPTION: Screenshot alacritty
+#+ATTR_HTML: :width 800 :alt Alacritty Scrot :title Alacritty Scrot :align left;
 [[./images/screenshot-alacritty.png]]
 
 * Init

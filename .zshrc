@@ -296,3 +296,11 @@ source /usr/share/zsh/plugins/zsh-sudo/sudo.plugin.zsh
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# fnm
+export PATH="/home/je4n/.local/share/fnm:$PATH"
+eval "`fnm env`"
+
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
