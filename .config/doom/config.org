@@ -558,9 +558,9 @@ Settings related to fonts within Doom Emacs:
 + 'font-lock-keyword-face' -- for keywords with special significance like 'setq' in elisp.
 
 #+BEGIN_SRC emacs-lisp
-(setq doom-font (font-spec :family "Mononoki Nerd Font" :size 15)
-      doom-variable-pitch-font (font-spec :family "Mononoki Nerd Font" :size 15)
-      doom-big-font (font-spec :family "Mononoki Nerd Font" :size 24))
+(setq doom-font (font-spec :family "Iosevka Nerd Font" :size 15)
+      doom-variable-pitch-font (font-spec :family "Iosevka Nerd Font" :size 15)
+      doom-big-font (font-spec :family "Iosevka Nerd Font" :size 24))
 (after! doom-themes
   (setq doom-themes-enable-bold t
         doom-themes-enable-italic t))
@@ -704,12 +704,15 @@ The modeline is the bottom status bar that appears in Emacs windows.  For more i
 https://github.com/seagle0128/doom-modeline
 
 #+begin_src emacs-lisp
-(set-face-attribute 'mode-line nil :font "Mononoki Nerd Font")
+(set-face-attribute 'mode-line nil :font "Iosevka Nerd Font")
 (setq doom-modeline-height 30     ;; sets modeline height
       doom-modeline-bar-width 5   ;; sets right bar width
       doom-modeline-persp-name t  ;; adds perspective name to modeline
       doom-modeline-persp-icon t) ;; adds folder icon next to persp name
 #+end_src
+
+#+RESULTS:
+: t
 
 * MOUSE SUPPORT
 Adding mouse support in the terminal version of Emacs.

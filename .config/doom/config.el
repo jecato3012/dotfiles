@@ -262,9 +262,9 @@
 
 (autoload 'exwm-enable "exwm-config.el")
 
-(setq doom-font (font-spec :family "Mononoki Nerd Font" :size 15)
-      doom-variable-pitch-font (font-spec :family "Mononoki Nerd Font" :size 15)
-      doom-big-font (font-spec :family "Mononoki Nerd Font" :size 24))
+(setq doom-font (font-spec :family "Iosevka Nerd Font" :size 15)
+      doom-variable-pitch-font (font-spec :family "Iosevka Nerd Font" :size 15)
+      doom-big-font (font-spec :family "Iosevka Nerd Font" :size 24))
 (after! doom-themes
   (setq doom-themes-enable-bold t
         doom-themes-enable-italic t))
@@ -337,7 +337,7 @@
       (:prefix ("t" . "toggle")
        :desc "Toggle minimap-mode" "m" #'minimap-mode))
 
-(set-face-attribute 'mode-line nil :font "Mononoki Nerd Font")
+(set-face-attribute 'mode-line nil :font "Iosevka Nerd Font")
 (setq doom-modeline-height 30     ;; sets modeline height
       doom-modeline-bar-width 5   ;; sets right bar width
       doom-modeline-persp-name t  ;; adds perspective name to modeline
