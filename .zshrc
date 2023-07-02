@@ -1,8 +1,3 @@
-#  ____ _____
-# |  _ \_   _|  Derek Taylor (DistroTube)
-# | | | || |    http://www.youtube.com/c/DistroTube
-# | |_| || |    http://www.gitlab.com/dwt1/
-# |____/ |_|
 # My zsh config. Not much to see here; just some pretty standard stuff.
 
 ### EXPORT
@@ -50,6 +45,18 @@ fi
 if [ -d "/var/lib/flatpak/exports/bin/" ] ;
   then PATH="/var/lib/flatpak/exports/bin/:$PATH"
 fi
+
+# pnpm
+export PNPM_HOME="/home/jean/.local/share/pnpm"
+case ":$PATH:" in
+*":$PNPM_HOME:"*) ;;
+*) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+# Deno
+export DENO_INSTALL="/home/jean/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
 
 ### SETTING OTHER ENVIRONMENT VARIABLES
 if [ -z "$XDG_CONFIG_HOME" ] ; then
@@ -143,8 +150,10 @@ up () {
   fi
 }
 
+# Changind "cat" to "bat"
+alias cat="bat"
+
 # vim and emacs
-alias vim="nvim"
 alias em="/usr/bin/emacs -nw"
 alias emacs="emacsclient -c -a 'emacs'"
 
@@ -279,3 +288,11 @@ fi
 ### SETTING THE STARSHIP PROMPT ###
 eval "$(starship init zsh)"
 
+### PLUGINS ###
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
+source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+source /usr/share/zsh/plugins/zsh-sudo/sudo.plugin.zsh
+
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -1,12 +1,26 @@
-local options = {
-  ensure_installed = { "lua" },
+local present, ts_config = pcall(require, "nvim-treesitter.configs")
 
-  highlight = {
-    enable = true,
-    use_languagetree = true,
-  },
+if not present then
+   return
+end
 
-  indent = { enable = true },
+local default = {
+   ensure_installed = {
+      "lua",
+      "vim",
+   },
+   highlight = {
+      enable = true,
+      use_languagetree = true,
+   },
 }
 
-return options
+local M = {}
+M.setup = function(override_flag)
+   if override_flag then
+      default = require("core.utils").tbl_override_req("nvim_treesitter", default)
+   end
+   ts_config.setup(default)
+end
+
+return M

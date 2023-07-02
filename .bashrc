@@ -7,10 +7,6 @@ export ALTERNATE_EDITOR=""              # setting for emacsclient
 export EDITOR="emacsclient -t -a ''"    # $EDITOR use Emacs in terminal
 export VISUAL="emacsclient -c -a emacs" # $VISUAL use Emacs in GUI mode
 
-# Deno
-export DENO_INSTALL="/home/jean/.deno"
-export PATH="$DENO_INSTALL/bin:$PATH"
-
 ### SET MANPAGER
 ### Uncomment only one of these!
 
@@ -60,6 +56,18 @@ fi
 if [ -d "$HOME/go/bin/" ]; then
 	PATH="$HOME/go/bin/:$PATH"
 fi
+
+# pnpm
+export PNPM_HOME="/home/jean/.local/share/pnpm"
+case ":$PATH:" in
+*":$PNPM_HOME:"*) ;;
+*) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+# Deno
+export DENO_INSTALL="/home/jean/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
 
 ### SETTING OTHER ENVIRONMENT VARIABLES
 if [ -z "$XDG_CONFIG_HOME" ]; then
@@ -293,12 +301,6 @@ fi
 ### SETTING THE STARSHIP PROMPT ###
 eval "$(starship init bash)"
 
-# pnpm
-export PNPM_HOME="/home/jean/.local/share/pnpm"
-case ":$PATH:" in
-*":$PNPM_HOME:"*) ;;
-*) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-
 PATH=~/.console-ninja/.bin:$PATH
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

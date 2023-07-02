@@ -1,67 +1,41 @@
-dofile(vim.g.base46_cache .. "lsp")
-require "nvchad_ui.lsp"
-
 local M = {}
-local utils = require "core.utils"
+require("plugins.configs.others").lsp_handlers()
 
--- export on_attach & capabilities for custom lspconfigs
+function M.on_attach(client, bufnr)
+   local function buf_set_option(...)
+      vim.api.nvim_buf_set_option(bufnr, ...)
+   end
 
-M.on_attach = function(client, bufnr)
-  client.server_capabilities.documentFormattingProvider = false
-  client.server_capabilities.documentRangeFormattingProvider = false
+   client.resolved_capabilities.document_formatting = false
+   client.resolved_capabilities.document_range_formatting = false
+   -- Enable completion triggered by <c-x><c-o>
+   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
-  utils.load_mappings("lspconfig", { buffer = bufnr })
-
-  if client.server_capabilities.signatureHelpProvider then
-    require("nvchad_ui.signature").setup(client)
-  end
-
-  if not utils.load_config().ui.lsp_semantic_tokens and client.supports_method "textDocument/semanticTokens" then
-    client.server_capabilities.semanticTokensProvider = nil
-  end
+   require("core.mappings").lspconfig()
 end
 
-M.capabilities = vim.lsp.protocol.make_client_capabilities()
-
-M.capabilities.textDocument.completion.completionItem = {
-  documentationFormat = { "markdown", "plaintext" },
-  snippetSupport = true,
-  preselectSupport = true,
-  insertReplaceSupport = true,
-  labelDetailsSupport = true,
-  deprecatedSupport = true,
-  commitCharactersSupport = true,
-  tagSupport = { valueSet = { 1 } },
-  resolveSupport = {
-    properties = {
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.documentationFormat = { "markdown", "plaintext" }
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.completion.completionItem.preselectSupport = true
+capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
+capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
+capabilities.textDocument.completion.completionItem.deprecatedSupport = true
+capabilities.textDocument.completion.completionItem.commitCharactersSupport = true
+capabilities.textDocument.completion.completionItem.tagSupport = { valueSet = { 1 } }
+capabilities.textDocument.completion.completionItem.resolveSupport = {
+   properties = {
       "documentation",
       "detail",
       "additionalTextEdits",
-    },
-  },
+   },
 }
 
-require("lspconfig").lua_ls.setup {
-  on_attach = M.on_attach,
-  capabilities = M.capabilities,
+-- requires a file containing user's lspconfigs
+local addlsp_confs = require("core.utils").load_config().plugins.options.lspconfig.setup_lspconf
 
-  settings = {
-    Lua = {
-      diagnostics = {
-        globals = { "vim" },
-      },
-      workspace = {
-        library = {
-          [vim.fn.expand "$VIMRUNTIME/lua"] = true,
-          [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
-          [vim.fn.stdpath "data" .. "/lazy/extensions/nvchad_types"] = true,
-          [vim.fn.stdpath "data" .. "/lazy/lazy.nvim/lua/lazy"] = true,
-        },
-        maxPreload = 100000,
-        preloadFileSize = 10000,
-      },
-    },
-  },
-}
+if #addlsp_confs ~= 0 then
+   require(addlsp_confs).setup_lsp(M.on_attach, capabilities)
+end
 
 return M

@@ -1,3 +1,35 @@
+#+title: Readme
+#+AUTHOR: jecato3012
+#+PROPERTY: header-args :tangle alacritty.yml
+#+auto_tangle: t
+#+STARTUP: showverything
+
+* Table of contents :toc:
+- [[#about-alacritty][About Alacritty]]
+- [[#init][Init]]
+- [[#env][Env]]
+- [[#scrolling][Scrolling]]
+- [[#tabspace][Tabspace]]
+- [[#visual-bell][Visual Bell]]
+- [[#selection][Selection]]
+- [[#cursor][Cursor]]
+- [[#shell][Shell]]
+- [[#debug][Debug]]
+- [[#mouse][Mouse]]
+- [[#url][Url]]
+- [[#mouse-bindings][Mouse bindings]]
+- [[#colorschemes][Colorschemes]]
+- [[#fonts][Fonts]]
+- [[#keybindings][Keybindings]]
+- [[#window][Window]]
+
+* About Alacritty
+Configuration for Alacritty, the GPU enhanced terminal emulator. Any items in the `env` entry below will be added as environment variables. Some entries may override variables set by alacritty itself.
+
+[[./images/screenshot-alacritty.png]]
+
+* Init
+#+BEGIN_SRC yaml
 # If this is `true`, the cursor will be rendered as a hollow box when the
 # window is not focused.
 unfocused_hollow: true
@@ -18,7 +50,10 @@ unfocused_hollow: true
 live_config_reload: true
 # Record all characters and escape sequences as test data.
 ref_test: false
+#+END_SRC
 
+* Env
+#+BEGIN_SRC yaml
 #### ENV
 env:
   # TERM variable
@@ -27,7 +62,10 @@ env:
   # check the local terminfo database and use `alacritty` if it is
   # available, otherwise `xterm-256color` is used.
   TERM: xterm-256color
+#+END_SRC
 
+* Scrolling
+#+BEGIN_SRC yaml
 ##### SCROLLING
 scrolling:
   # Maximum number of lines in the scrollback buffer.
@@ -40,7 +78,10 @@ scrolling:
 
   # Scroll to the bottom when new text is written to the terminal.
   auto_scroll: true
+#+END_SRC
 
+* Tabspace
+#+BEGIN_SRC yaml
 ##### TABSPACE
 # Spaces per Tab (changes require restart)
 # This setting defines the width of a tab in cells.
@@ -50,7 +91,10 @@ scrolling:
 tabspaces: 8
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
+#+END_SRC
 
+* Visual Bell
+#+BEGIN_SRC yaml
 ##### VISUAL BELL
 # Any time the BEL code is received, Alacritty "rings" the visual bell. Once
 # rung, the terminal background will be set to white and transition back to the
@@ -74,7 +118,10 @@ visual_bell:
   animation: EaseOutExpo
   duration: 0
   color: "#ffffff"
+#+END_SRC
 
+* Selection
+#+BEGIN_SRC yaml
 ##### SELECTION
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
@@ -83,7 +130,10 @@ selection:
 
 # Allow terminal applications to change Alacritty's window title.
 dynamic_title: true
+#+END_SRC
 
+* Cursor
+#+BEGIN_SRC yaml
 ##### CURSOR
 cursor:
   # Cursor style
@@ -94,7 +144,10 @@ cursor:
   style:
     shape: Block
     blinking: Off
+#+END_SRC
 
+* Shell
+#+BEGIN_SRC yaml
 ### SHELL
 # You can set `shell.program` to the path of your favorite shell, e.g. `/bin/fish`.
 # Entries in `shell.args` are passed unmodified as arguments to the shell.
@@ -106,7 +159,10 @@ cursor:
 #  program: /bin/bash
 #  args:
 #    - --login
+#+END_SRC
 
+* Debug
+#+BEGIN_SRC yaml
 ###### DEBUG
 debug:
   # Display the time it takes to redraw each frame.
@@ -124,7 +180,10 @@ debug:
   log_level: Warn
   # Print all received window events.
   print_events: false
+#+END_SRC
 
+* Mouse
+#+BEGIN_SRC yaml
 ##### MOUSE
 mouse:
   # Click settings
@@ -135,7 +194,10 @@ mouse:
   triple_click: { threshold: 300 }
   # If this is `true`, the cursor is temporarily hidden when typing.
   hide_when_typing: false
+#+END_SRC
 
+* Url
+#+BEGIN_SRC yaml
 ##### URL
 url:
 # URL launcher
@@ -153,7 +215,10 @@ launcher:
 # These are the modifiers that need to be held down for opening URLs when clicking
 # on them. The available modifiers are documented in the key binding section.
 modifiers: None
+#+END_SRC
 
+* Mouse bindings
+#+BEGIN_SRC yaml
 ##### MOUSE BINDINGS
 # Mouse bindings are specified as a list of objects, much like the key
 # bindings further below.
@@ -168,7 +233,10 @@ modifiers: None
 # - `mods` (see key bindings)
 mouse_bindings:
   - { mouse: Middle, action: PasteSelection }
+#+END_SRC
 
+* Colorschemes
+#+BEGIN_SRC yaml
 ##### COLORS SCHEMES
 schemes:
   ### Doom One ###
@@ -515,7 +583,10 @@ schemes:
 # *TomorrowNight
 
 colors: *DoomOne
+#+END_SRC
 
+* Fonts
+#+BEGIN_SRC yaml
 ##### FONT CONFIGURATION
 fontList:
   SourceCode: &SourceCode
@@ -706,7 +777,10 @@ fontList:
 # *Monofur
 
 font: *Iosevka
+#+END_SRC
 
+* Keybindings
+#+BEGIN_SRC yaml
 ##### KEY BINDINGS
 # Key bindings are specified as a list of objects. For example, this is the
 # default paste binding:
@@ -871,7 +945,10 @@ key_bindings:
   - { key: NumpadAdd, mods: Control, action: IncreaseFontSize }
   - { key: Minus, mods: Control, action: DecreaseFontSize }
   - { key: NumpadSubtract, mods: Control, action: DecreaseFontSize }
+#+END_SRC
 
+* Window
+#+BEGIN_SRC yaml
 ##### WINDOW
 window:
   # Window dimensions (changes require restart)
@@ -935,3 +1012,4 @@ window:
   # Override the variant of the GTK theme. Commonly supported values are `dark` and `light`.
   # Set this to `None` to use the default theme variant.
   #gtk_theme_variant: None
+#+END_SRC

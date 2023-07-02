@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-from libqtile.dgroups import simple_key_binder
 import os
 import re
 import socket
@@ -15,11 +13,14 @@ from typing import List  # noqa: F401
 from qtile_extras import widget
 from qtile_extras.widget.decorations import BorderDecoration
 
-mod = "mod4"                     # Sets mod key to SUPER/WINDOWS
-myTerm = "alacritty"             # My terminal of choice
-myBrowser = "qutebrowser"        # My browser of choice
-myLauncher = "dmenu_run -l 20 -g 4 -bw 4 -c -p Run:"
-launcher = "rofi -show drun"
+mod="mod4"              # Set mod key to SUPER/WINDOWS
+myTerm="alacritty"      # My terminal of choice
+myBrowser="qutebrowser" # My browser of choice
+myLauncher="dmenu_run -l 20 -g 4 -bw 4 -c -p RUN:"
+launcher="rofi -show drun"
+keyboards = ["es"]
+fontConfig = "Iosevka Nerd Font"
+redInterface = "enp6s0"
 
 keys = [
     # The essentials
@@ -118,12 +119,8 @@ groups = [Group("DEV", layout='monadtall'),
 # Allow MODKEY+[0 through 9] to bind to groups, see https://docs.qtile.org/en/stable/manual/config/groups.html
 # MOD4 + index Number : Switch to Group[index]
 # MOD4 + shift + index Number : Send active window to another Group
+from libqtile.dgroups import simple_key_binder
 dgroups_key_binder = simple_key_binder("mod4")
-
-##### VARIABLES ######
-keyboards = ["es"]
-fontConfig = "Iosevka Nerd Font"
-redInterface = "enp6s0"
 
 layout_theme = {"border_width": 2,
                 "margin": 8,
@@ -147,9 +144,9 @@ layouts = [
     layout.RatioTile(**layout_theme),
     layout.TreeTab(
         font=fontConfig,
-        fontsize=12,
+        fontsize=14,
         sections=["FIRST", "SECOND", "THIRD", "FOURTH"],
-        section_fontsize=12,
+        section_fontsize=14,
         border_width=2,
         bg_color="1c1f24",
         active_bg="c678dd",
@@ -184,12 +181,11 @@ prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
 ##### DEFAULT WIDGET SETTINGS #####
 widget_defaults = dict(
     font=fontConfig,
-    fontsize=12,
-    padding=2,
+    fontsize = 14,
+    padding = 2,
     background=colors[2]
 )
 extension_defaults = widget_defaults.copy()
-
 
 def init_widgets_list():
     widgets_list = [
@@ -212,7 +208,7 @@ def init_widgets_list():
         ),
         widget.GroupBox(
             font=fontConfig,
-            fontsize=9,
+            fontsize=14,
             margin_y=3,
             margin_x=0,
             padding_y=5,
@@ -252,7 +248,7 @@ def init_widgets_list():
         ),
         widget.TextBox(
             text='|',
-            font=" Mono",
+            font=fontConfig,
             background=colors[0],
             foreground='474747',
             padding=2,
@@ -439,44 +435,27 @@ def init_widgets_list():
     ]
     return widgets_list
 
-
-def init_widgets_screen1():
-    widgets_screen1 = init_widgets_list()
-    # Slicing removes unwanted widgets (systray) on Monitors 1,3
-    del widgets_screen1[9:10]
-    return widgets_screen1
-
-
-def init_widgets_screen2():
-    widgets_screen2 = init_widgets_list()
-    # Monitor 2 will display all widgets in widgets_list
-    return widgets_screen2
-
+def init_widgets_screen():
+    widgets_screen = init_widgets_list()
+    del widgets_screen[9:10]
+    return widgets_screen
 
 def init_screens():
-    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), opacity=1.0, size=20)),
-            Screen(top=bar.Bar(widgets=init_widgets_screen2(), opacity=1.0, size=20)),
-            Screen(top=bar.Bar(widgets=init_widgets_screen1(), opacity=1.0, size=20))]
-
-
+    return [Screen(top=bar.Bar(widgets=init_widgets_screen(), opacity=1.0, size=20))]
 if __name__ in ["config", "__main__"]:
     screens = init_screens()
     widgets_list = init_widgets_list()
-    widgets_screen1 = init_widgets_screen1()
-    widgets_screen2 = init_widgets_screen2()
-
+    widgets_screen = init_widgets_screen()
 
 def window_to_prev_group(qtile):
     if qtile.currentWindow is not None:
         i = qtile.groups.index(qtile.currentGroup)
         qtile.currentWindow.togroup(qtile.groups[i - 1].name)
 
-
 def window_to_next_group(qtile):
     if qtile.currentWindow is not None:
         i = qtile.groups.index(qtile.currentGroup)
         qtile.currentWindow.togroup(qtile.groups[i + 1].name)
-
 
 def window_to_previous_screen(qtile):
     i = qtile.screens.index(qtile.current_screen)
@@ -484,19 +463,16 @@ def window_to_previous_screen(qtile):
         group = qtile.screens[i - 1].group.name
         qtile.current_window.togroup(group)
 
-
 def window_to_next_screen(qtile):
     i = qtile.screens.index(qtile.current_screen)
     if i + 1 != len(qtile.screens):
         group = qtile.screens[i + 1].group.name
         qtile.current_window.togroup(group)
 
-
 def switch_screens(qtile):
     i = qtile.screens.index(qtile.current_screen)
     group = qtile.screens[i - 1].group
     qtile.current_screen.set_group(group)
-
 
 mouse = [
     Drag([mod], "Button1", lazy.window.set_position_floating(),
@@ -519,7 +495,7 @@ floating_layout = layout.Floating(float_rules=[
     Match(title='Confirmation'),      # tastyworks exit box
     Match(title='Qalculate!'),        # qalculate-gtk
     Match(wm_class='kdenlive'),       # kdenlive
-    Match(wm_class='pinentry-gtk-2'),  # GPG key password entry
+    Match(wm_class='pinentry-gtk-2'), # GPG key password entry
 ])
 auto_fullscreen = True
 focus_on_window_activation = "smart"
@@ -529,12 +505,10 @@ reconfigure_screens = True
 # focus, should we respect this or not?
 auto_minimize = True
 
-
 @hook.subscribe.startup_once
 def start_once():
     home = os.path.expanduser('~')
     subprocess.call([home + '/.config/qtile/autostart.sh'])
-
 
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
 # string besides java UI toolkits; you can see several discussions on the

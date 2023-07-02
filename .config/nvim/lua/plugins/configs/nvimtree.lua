@@ -1,77 +1,86 @@
-local options = {
-  filters = {
-    dotfiles = false,
-    exclude = { vim.fn.stdpath "config" .. "/lua/custom" },
-  },
-  disable_netrw = true,
-  hijack_netrw = true,
-  hijack_cursor = true,
-  hijack_unnamed_buffer_when_opening = false,
-  sync_root_with_cwd = true,
-  update_focused_file = {
-    enable = true,
-    update_root = false,
-  },
-  view = {
-    adaptive_size = false,
-    side = "left",
-    width = 30,
-    preserve_window_proportions = true,
-  },
-  git = {
-    enable = false,
-    ignore = true,
-  },
-  filesystem_watchers = {
-    enable = true,
-  },
-  actions = {
-    open_file = {
-      resize_window = true,
-    },
-  },
-  renderer = {
-    root_folder_label = false,
-    highlight_git = false,
-    highlight_opened_files = "none",
+-- globals must be set prior to requiring nvim-tree to function
+local g = vim.g
 
-    indent_markers = {
-      enable = false,
-    },
+g.nvim_tree_add_trailing = 0 -- append a trailing slash to folder names
+g.nvim_tree_git_hl = 0
+g.nvim_tree_highlight_opened_files = 0
+g.nvim_tree_indent_markers = 1
+g.nvim_tree_root_folder_modifier = table.concat { ":t:gs?$?/..", string.rep(" ", 1000), "?:gs?^??" }
 
-    icons = {
-      show = {
-        file = true,
-        folder = true,
-        folder_arrow = true,
-        git = false,
-      },
-
-      glyphs = {
-        default = "󰈚",
-        symlink = "",
-        folder = {
-          default = "",
-          empty = "",
-          empty_open = "",
-          open = "",
-          symlink = "",
-          symlink_open = "",
-          arrow_open = "",
-          arrow_closed = "",
-        },
-        git = {
-          unstaged = "✗",
-          staged = "✓",
-          unmerged = "",
-          renamed = "➜",
-          untracked = "★",
-          deleted = "",
-          ignored = "◌",
-        },
-      },
-    },
-  },
+g.nvim_tree_show_icons = {
+   folders = 1,
+   files = 1,
+   git = 1,
 }
 
-return options
+g.nvim_tree_icons = {
+   default = "",
+   symlink = "",
+   git = {
+      deleted = "",
+      ignored = "◌",
+      renamed = "➜",
+      staged = "✓",
+      unmerged = "",
+      unstaged = "✗",
+      untracked = "★",
+   },
+   folder = {
+      default = "",
+      empty = "",
+      empty_open = "",
+      open = "",
+      symlink = "",
+      symlink_open = "",
+   },
+}
+
+local present, nvimtree = pcall(require, "nvim-tree")
+
+if not present then
+   return
+end
+
+local default = {
+   filters = {
+      dotfiles = false,
+   },
+   disable_netrw = true,
+   hijack_netrw = true,
+   ignore_ft_on_setup = { "dashboard" },
+   auto_close = false,
+   open_on_tab = false,
+   hijack_cursor = true,
+   hijack_unnamed_buffer_when_opening = false,
+   update_cwd = true,
+   update_focused_file = {
+      enable = true,
+      update_cwd = false,
+   },
+   view = {
+      allow_resize = true,
+      side = "left",
+      width = 25,
+      hide_root_folder = true,
+   },
+   git = {
+      enable = false,
+      ignore = false,
+   },
+   actions = {
+      open_file = {
+         resize_window = true,
+      },
+   },
+}
+
+local M = {}
+
+M.setup = function(override_flag)
+   if override_flag then
+      default = require("core.utils").tbl_override_req("nvim_tree", default)
+   end
+   nvimtree.setup(default)
+end
+
+return M
