@@ -308,3 +308,5 @@ eval "$(starship init bash)"
 PATH=~/.console-ninja/.bin:$PATH
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+source /home/je4n/.config/broot/launcher/bash/br

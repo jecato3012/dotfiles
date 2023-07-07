@@ -12,6 +12,10 @@
     "linkOpenStyle": false,
     "links": [
       {
+        "url": "https://www.notion.so/Home-9a5dc335b2c34f36a724695b8e578375",
+        "name": "notion"
+      },
+      {
         "url": "https://www.facebook.com",
         "name": "facebook"
       },
@@ -386,7 +390,7 @@
   "widget/DqZps1GdNCFe": {
     "display": {
       "fontFamily": "Iosevka Nerd FOnt",
-      "fontSize": 15,
+      "fontSize": 20,
       "fontWeight": 700,
       "position": "topCentre"
     },
