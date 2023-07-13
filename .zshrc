@@ -58,6 +58,9 @@ esac
 export DENO_INSTALL="/home/jean/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 
+# BUN
+export PATH="/home/je4n/.bun/bin:$PATH"
+
 ### SETTING OTHER ENVIRONMENT VARIABLES
 if [ -z "$XDG_CONFIG_HOME" ] ; then
     export XDG_CONFIG_HOME="$HOME/.config"
@@ -194,7 +197,7 @@ alias rm='rm -i'
 alias df='df -h'                          # human-readable sizes
 alias free='free -m'                      # show sizes in MB
 alias lynx='lynx -cfg=~/.lynx/lynx.cfg -lss=~/.lynx/lynx.lss -vikeys'
-alias vifm='./.config/vifm/scripts/vifmrun'
+alias vifm='/home/je4n/.config/vifm/scripts/vifmrun'
 alias ncmpcpp='ncmpcpp ncmpcpp_directory=$HOME/.config/ncmpcpp/'
 alias mocp='mocp -M "$XDG_CONFIG_HOME"/moc -O MOCDir="$XDG_CONFIG_HOME"/moc'
 
@@ -306,3 +309,10 @@ export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 source /home/je4n/.config/broot/launcher/bash/br
+
+# bun completions
+[ -s "/home/je4n/.bun/_bun" ] && source "/home/je4n/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

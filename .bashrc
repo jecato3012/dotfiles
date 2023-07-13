@@ -305,7 +305,7 @@ fi
 ### SETTING THE STARSHIP PROMPT ###
 eval "$(starship init bash)"
 
-PATH=~/.console-ninja/.bin:$PATH
+
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 

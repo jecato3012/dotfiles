@@ -1,398 +1,110 @@
 {
   "background": {
-    "display": {
-      "blur": 0,
-      "luminosity": -0.2
-    },
+    "display": { "blur": 0, "luminosity": -0.2 },
     "id": "Wun-C7wfycHu",
     "key": "background/colour"
   },
   "data/DqZps1GdNCFe": {
-    "columns": 5,
+    "columns": 3,
     "linkOpenStyle": false,
     "links": [
       {
-        "url": "https://www.notion.so/Home-9a5dc335b2c34f36a724695b8e578375",
-        "name": "notion"
-      },
-      {
+        "name": "facebook",
         "url": "https://www.facebook.com",
-        "name": "facebook"
+        "icon": "facebook"
       },
       {
+        "name": "linkedin",
         "url": "https://www.linkedin.com/feed",
-        "name": "linkedin"
+        "icon": "linkedin"
       },
       {
+        "name": "discord",
         "url": "https://discord.com/channels/@me",
-        "name": "discord"
+        "icon": "info"
       },
       {
+        "name": "lukesmith",
         "url": "https://lukesmith.xyz/",
-        "name": "lukesmith"
+        "icon": "archive"
+      },
+      { "name": "suckless", "url": "https://suckless.org/", "icon": "archive" },
+      {
+        "name": "free:fonts",
+        "url": "https://www.freebestfonts.com",
+        "icon": "archive"
       },
       {
-        "url": "https://suckless.org/",
-        "name": "suckless"
-      },
-      {
+        "name": "faztweb",
         "url": "https://www.faztweb.com/",
-        "name": "faztweb"
+        "icon": "archive"
       },
       {
+        "name": "whatsapp",
         "url": "https://web.whatsapp.com/",
-        "name": "whatsapp"
+        "icon": "phone"
       },
       {
+        "name": "youtube",
         "url": "https://www.youtube.com/",
-        "name": "youtube"
+        "icon": "youtube"
       },
       {
+        "name": "@julio",
         "url": "https://mail.google.com/mail/u/1/#inbox",
-        "name": "@julio"
+        "icon": "mail"
       },
       {
+        "name": "@jean",
         "url": "https://mail.google.com/mail/u/0/",
-        "name": "@jean"
+        "icon": "mail"
       },
       {
+        "name": "github:my",
         "url": "https://github.com/jecato3012",
-        "name": "github:my"
+        "icon": "github"
       },
+      { "name": "gitlab:my", "url": "https://gitlab.com/", "icon": "gitlab" },
       {
-        "url": "https://gitlab.com/",
-        "name": "gitlab:my"
-      },
-      {
+        "name": "github:midu",
         "url": "https://github.com/midudev",
-        "name": "github:midu"
+        "icon": "github"
       },
       {
+        "name": "github:faztweb",
         "url": "https://github.com/faztweb",
-        "name": "github:faztweb"
+        "icon": "github"
       },
       {
+        "name": "gitlab:dt",
         "url": "https://gitlab.com/dwt1",
-        "name": "gitlab:dt"
+        "icon": "gitlab"
       },
       {
+        "name": "github:atareao",
         "url": "https://github.com/atareao",
-        "name": "github:atareao"
+        "icon": "github"
       },
       {
+        "name": "github:fazt",
         "url": "https://github.com/fazt",
-        "name": "github:fazt"
-      },
-      {
-        "url": "https://www.postgresql.org",
-        "name": "postgresql"
-      },
-      {
-        "url": "https://www.docker.com",
-        "name": "docker"
-      },
-      {
-        "url": "https://kubernetes.io",
-        "name": "kubernetes"
-      },
-      {
-        "url": "https://unity.com",
-        "name": "unity3D"
-      },
-      {
-        "url": "https://tailwindcss.com/",
-        "name": "tailwind"
-      },
-      {
-        "url": "https://usehooks.com/",
-        "name": "useHooks"
-      },
-      {
-        "url": "https://usehooks-ts.com/",
-        "name": "useHooks-ts"
-      },
-      {
-        "url": "https://devdocs.io/",
-        "name": "devdocs"
-      },
-      {
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
-        "name": "mdn:js"
-      },
-      {
-        "url": "https://developer.mozilla.org/en-US/docs/Web/HTML",
-        "name": "mdn:html"
-      },
-      {
-        "url": "https://www.python.org",
-        "name": "python"
-      },
-      {
-        "url": "https://www.typescriptlang.org",
-        "name": "typescript"
-      },
-      {
-        "url": "https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html",
-        "name": "bash"
-      },
-      {
-        "url": "https://zsh.sourceforge.io",
-        "name": "zsh"
-      },
-      {
-        "url": "https://cplusplus.com",
-        "name": "c++"
-      },
-      {
-        "url": "https://go.dev",
-        "name": "go"
-      },
-      {
-        "url": "https://www.php.net",
-        "name": "php"
-      },
-      {
-        "url": "https://www.rust-lang.org",
-        "name": "rust"
-      },
-      {
-        "url": "https://www.lua.org",
-        "name": "lua"
-      },
-      {
-        "url": "https://cran.r-project.org",
-        "name": "R"
-      },
-      {
-        "url": "https://www.perl.org",
-        "name": "perl"
-      },
-      {
-        "name": "elixir",
-        "url": "https://elixir-lang.org"
-      },
-      {
-        "url": "https://www.haskell.org",
-        "name": "haskell"
-      },
-      {
-        "url": "https://lisp-lang.org",
-        "name": "lisp"
-      },
-      {
-        "url": "https://soliditylang.org",
-        "name": "solidity"
-      },
-      {
-        "url": "https://clojure.org",
-        "name": "clojure"
-      },
-      {
-        "url": "https://julialang.org",
-        "name": "julia"
-      },
-      {
-        "url": "https://fsharp.org",
-        "name": "f#"
-      },
-      {
-        "url": "https://ziglang.org",
-        "name": "zig"
-      },
-      {
-        "url": "https://crystal-lang.org",
-        "name": "crystal"
-      },
-      {
-        "url": "https://nim-lang.org",
-        "name": "nim"
-      },
-      {
-        "url": "https://www.gnu.org/software/emacs/",
-        "name": "emacs"
-      },
-      {
-        "url": "https://github.com/doomemacs/doomemacs",
-        "name": "emacs:doom"
-      },
-      {
-        "url": "https://neovim.io",
-        "name": "neovim"
-      },
-      {
-        "url": "https://www.vim.org/",
-        "name": "vim"
-      },
-      {
-        "url": "https://helix-editor.com/",
-        "name": "helix"
-      },
-      {
-        "url": "https://www.nano-editor.org",
-        "name": "nano"
-      },
-      {
-        "url": "https://micro-editor.github.io/",
-        "name": "micro"
-      },
-      {
-        "url": "https://aws.amazon.com/es/",
-        "name": "aws"
-      },
-      {
-        "url": "https://react.dev/",
-        "name": "reactjs"
-      },
-      {
-        "url": "https://expressjs.com/",
-        "name": "expressjs"
-      },
-      {
-        "url": "https://nextjs.org/",
-        "name": "nextjs"
-      },
-      {
-        "url": "https://vuejs.org/",
-        "name": "vuejs"
-      },
-      {
-        "url": "https://laravel.com/",
-        "name": "laravel"
-      },
-      {
-        "url": "https://svelte.dev/",
-        "name": "sveltejs"
-      },
-      {
-        "url": "https://nestjs.com/",
-        "name": "nestjs"
-      },
-      {
-        "url": "https://nuxt.com/",
-        "name": "nuxtjs"
-      },
-      {
-        "url": "https://deno.com/runtime",
-        "name": "denojs/ts"
-      },
-      {
-        "url": "https://fastify.io",
-        "name": "fastifyjs/ts"
-      },
-      {
-        "url": "https://www.phoenixframework.org",
-        "name": "phoenix"
-      },
-      {
-        "url": "https://www.solidjs.com",
-        "name": "solidjs"
-      },
-      {
-        "url": "https://remix.run",
-        "name": "remix"
-      },
-      {
-        "url": "https://elm-lang.org",
-        "name": "elm"
-      },
-      {
-        "url": "https://qwik.builder.io",
-        "name": "qwickjs"
-      },
-      {
-        "url": "https://numpy.org",
-        "name": "numpy"
-      },
-      {
-        "url": "https://pandas.pydata.org",
-        "name": "pandas"
-      },
-      {
-        "url": "https://www.tensorflow.org",
-        "name": "tensorflow"
-      },
-      {
-        "url": "https://tauri.app",
-        "name": "tauri"
-      },
-      {
-        "url": "https://www.npmjs.com",
-        "name": "npm"
-      },
-      {
-        "url": "https://pypi.org",
-        "name": "py"
-      },
-      {
-        "url": "https://yarnpkg.com",
-        "name": "yarn"
-      },
-      {
-        "url": "https://webpack.js.org/",
-        "name": "webpackjs"
-      },
-      {
-        "url": "https://vitejs.dev/",
-        "name": "vitejs"
-      },
-      {
-        "url": "https://cmake.org/",
-        "name": "cmake"
-      },
-      {
-        "url": "https://gcc.gnu.org/",
-        "name": "gcc"
-      },
-      {
-        "url": "https://www.terraform.io",
-        "name": "terraform"
-      },
-      {
-        "url": "https://archlinux.org",
-        "name": "arch"
-      },
-      {
-        "url": "https://pnpm.io",
-        "name": "pnpm"
-      },
-      {
-        "url": "https://ninja-build.org",
-        "name": "ninja"
-      },
-      {
-        "url": "https://mesonbuild.com",
-        "name": "meson"
-      },
-      {
-        "url": "https://rmarkdown.rstudio.com",
-        "name": "rmarkdown"
-      },
-      {
-        "url": "https://www.markdownguide.org",
-        "name": "markdown"
-      },
-      {
-        "url": "https://www.gnu.org/software/emacs/manual/html_node/eintr",
-        "name": "emacs-lisp"
-      },
-      {
-        "url": "https://github.com/google/zx",
-        "name": "zx"
+        "icon": "github"
       }
     ],
     "visible": true
   },
-  "data/Wun-C7wfycHu": {
-    "colour": "#16242c"
-  },
+  "data/Wun-C7wfycHu": { "colour": "#061c28" },
+  "focus": false,
+  "locale": "es",
+  "timeZone": null,
   "widget/0TBuY4PjMyta": null,
   "widget/1Gqt3795OfGZ": null,
   "widget/DqZps1GdNCFe": {
     "display": {
       "fontFamily": "Iosevka Nerd FOnt",
-      "fontSize": 20,
+      "fontSize": 22,
       "fontWeight": 700,
-      "position": "topCentre"
+      "position": "middleCentre"
     },
     "id": "DqZps1GdNCFe",
     "key": "widget/links",
@@ -402,8 +114,37 @@
   "widget/default-greeting": null,
   "widget/default-time": null,
   "widget/jO-U36h9tkXz": null,
-  "focus": false,
-  "locale": "es",
-  "timeZone": null,
+  "widget/vu8DCMjBk7ZA": {
+    "id": "vu8DCMjBk7ZA",
+    "key": "widget/search",
+    "order": 1,
+    "display": {
+      "position": "topCentre",
+      "fontSize": 24,
+      "fontFamily": "Iosevka Nerd Font",
+      "fontWeight": 700
+    }
+  },
+  "widget/2Mh2Smbe8eHj": null,
+  "widget/shbGwPmnu4wL": {
+    "id": "shbGwPmnu4wL",
+    "key": "widget/time",
+    "order": 0,
+    "display": {
+      "position": "topCentre",
+      "fontSize": 12,
+      "fontFamily": "Iosevka Nerd Font",
+      "fontWeight": 700
+    }
+  },
+  "data/shbGwPmnu4wL": {
+    "mode": "digital",
+    "hour12": false,
+    "showDate": false,
+    "showMinutes": true,
+    "showSeconds": true,
+    "showDayPeriod": true,
+    "timeZone": "America/La_Paz"
+  },
   "version": 3
 }
